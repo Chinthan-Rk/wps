@@ -1,0 +1,236 @@
+{
+  "total_websites_count": 2,
+  "total_completed_scans_count": 0,
+  "total_active_vulnerabilities_count": 2,
+  "critical_vulnerabilities_count": 8,
+  "high_vulnerabilities_count": 4,
+  "medium_vulnerabilities_count": 2,
+  "recently_added_websites": [
+    {
+      "website_id": 2,
+      "last_scan": "Not available",
+      "scan_status": "Not available",
+      "last_scan_id": "Not available",
+      "severity": {
+        "Info": 0,
+        "Low": 0,
+        "Medium": 2,
+        "High": 0,
+        "Critical": 0,
+        "Undefined": 0,
+        "total": 2
+      },
+      "scan_schedule": {
+        "ScanSchedule_id": 2,
+        "website_id": 2,
+        "scan_schedule_date": "2025-03-26T11:27:45+05:30",
+        "frequency": "monthly",
+        "scan_schedule_status": "active",
+        "website_name": "test2",
+        "website_url": "https://www.tets2.com"
+      },
+      "website_name": "test2",
+      "website_url": "https://www.tets2.com",
+      "website_description": "example test 2",
+      "website_status": "active",
+      "created_date": "2025-03-12T11:28:29.910122+05:30",
+      "updated_date": "2025-03-12T11:28:29.910122+05:30",
+      "technical_contact": "1234@gmail.com",
+      "created_by": 4,
+      "updated_by": 4
+    },
+    {
+      "website_id": 1,
+      "last_scan": "2025-02-27T11:53:48.299780Z",
+      "scan_status": "Failed",
+      "last_scan_id": 14,
+      "severity": {
+        "Info": 0,
+        "Low": 0,
+        "Medium": 0,
+        "High": 0,
+        "Critical": 0,
+        "Undefined": 0,
+        "total": 0
+      },
+      "scan_schedule": {
+        "ScanSchedule_id": 1,
+        "website_id": 1,
+        "scan_schedule_date": "2024-05-09T15:00:39+05:30",
+        "frequency": "single",
+        "scan_schedule_status": "active",
+        "website_name": "test",
+        "website_url": "http://test.com"
+      },
+      "website_name": "test",
+      "website_url": "http://test.com",
+      "website_description": "test",
+      "website_status": "active",
+      "created_date": "2024-05-08T15:01:12.589020+05:30",
+      "updated_date": "2024-05-08T15:01:12.589020+05:30",
+      "technical_contact": "john@sony.com",
+      "created_by": 1,
+      "updated_by": 1
+    }
+  ],
+  "recent_scans": [
+    {
+      "scan_id": 14,
+      "submitted_by": 4,
+      "website_id": 1,
+      "scan_status": "Failed",
+      "scan_type": "Adhoc",
+      "start_time": "2025-02-27T17:23:48.299780+05:30",
+      "end_time": "2025-02-27T17:23:48.346698+05:30",
+      "website_name": "test",
+      "website_url": "http://test.com"
+    },
+    {
+      "scan_id": 13,
+      "submitted_by": 4,
+      "website_id": 1,
+      "scan_status": "Failed",
+      "scan_type": "Adhoc",
+      "start_time": "2025-02-27T14:10:09.223199+05:30",
+      "end_time": "2025-02-27T14:10:09.359001+05:30",
+      "website_name": "test",
+      "website_url": "http://test.com"
+    },
+    {
+      "scan_id": 12,
+      "submitted_by": 4,
+      "website_id": 1,
+      "scan_status": "Failed",
+      "scan_type": "Adhoc",
+      "start_time": "2025-02-27T14:08:55.801952+05:30",
+      "end_time": "2025-02-27T14:08:55.958704+05:30",
+      "website_name": "test",
+      "website_url": "http://test.com"
+    },
+    {
+      "scan_id": 11,
+      "submitted_by": 4,
+      "website_id": 1,
+      "scan_status": "Failed",
+      "scan_type": "Adhoc",
+      "start_time": "2025-02-27T14:02:11.145032+05:30",
+      "end_time": "2025-02-27T14:02:11.316686+05:30",
+      "website_name": "test",
+      "website_url": "http://test.com"
+    },
+    {
+      "scan_id": 10,
+      "submitted_by": 4,
+      "website_id": 1,
+      "scan_status": "Failed",
+      "scan_type": "Adhoc",
+      "start_time": "2025-02-27T14:00:19.323926+05:30",
+      "end_time": "2025-02-27T14:00:19.481385+05:30",
+      "website_name": "test",
+      "website_url": "http://test.com"
+    }
+  ],
+  "upcoming_scans": [
+    {
+      "ScanSchedule_id": 2,
+      "website_id": 2,
+      "scan_schedule_date": "2025-03-26T11:27:45+05:30",
+      "frequency": "monthly",
+      "scan_schedule_status": "active",
+      "website_name": "test2",
+      "website_url": "https://www.tets2.com"
+    },
+    {
+      "ScanSchedule_id": 1,
+      "website_id": 1,
+      "scan_schedule_date": "2024-05-09T15:00:39+05:30",
+      "frequency": "single",
+      "scan_schedule_status": "active",
+      "website_name": "test",
+      "website_url": "http://test.com"
+    }
+  ],
+  "failed_scans": [
+    {
+      "scan_id": 14,
+      "submitted_by": 4,
+      "website_id": 1,
+      "scan_status": "Failed",
+      "scan_type": "Adhoc",
+      "start_time": "2025-02-27T17:23:48.299780+05:30",
+      "end_time": "2025-02-27T17:23:48.346698+05:30",
+      "website_name": "test",
+      "website_url": "http://test.com"
+    },
+    {
+      "scan_id": 13,
+      "submitted_by": 4,
+      "website_id": 1,
+      "scan_status": "Failed",
+      "scan_type": "Adhoc",
+      "start_time": "2025-02-27T14:10:09.223199+05:30",
+      "end_time": "2025-02-27T14:10:09.359001+05:30",
+      "website_name": "test",
+      "website_url": "http://test.com"
+    },
+    {
+      "scan_id": 12,
+      "submitted_by": 4,
+      "website_id": 1,
+      "scan_status": "Failed",
+      "scan_type": "Adhoc",
+      "start_time": "2025-02-27T14:08:55.801952+05:30",
+      "end_time": "2025-02-27T14:08:55.958704+05:30",
+      "website_name": "test",
+      "website_url": "http://test.com"
+    },
+    {
+      "scan_id": 11,
+      "submitted_by": 4,
+      "website_id": 1,
+      "scan_status": "Failed",
+      "scan_type": "Adhoc",
+      "start_time": "2025-02-27T14:02:11.145032+05:30",
+      "end_time": "2025-02-27T14:02:11.316686+05:30",
+      "website_name": "test",
+      "website_url": "http://test.com"
+    },
+    {
+      "scan_id": 10,
+      "submitted_by": 4,
+      "website_id": 1,
+      "scan_status": "Failed",
+      "scan_type": "Adhoc",
+      "start_time": "2025-02-27T14:00:19.323926+05:30",
+      "end_time": "2025-02-27T14:00:19.481385+05:30",
+      "website_name": "test",
+      "website_url": "http://test.com"
+    }
+  ],
+  "top_websites_with_critical_vulnerability": [],
+  "websites_vulnerability_summary": [
+    {
+      "website_name": "test",
+      "last_scan": "2025-02-27T11:53:48.299780Z",
+      "severity": {
+        "Critical": 0,
+        "High": 0,
+        "Medium": 0
+      }
+    },
+    {
+      "website_name": "test2",
+      "last_scan": "Not available",
+      "severity": {
+        "Critical": 0,
+        "High": 0,
+        "Medium": 2
+      }
+    }
+  ],
+  "security_overview": {
+    "overall_risk_level": "Moderate",
+    "websites_affected": 1,
+    "last_assessment": "2025-02-27T11:53:48.299780Z"
+  }
+}
