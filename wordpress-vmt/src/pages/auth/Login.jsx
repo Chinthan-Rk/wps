@@ -2,18 +2,28 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Shield, LogIn } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import axios from "../../utils/Axios";
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     setIsLoading(true);
-    // Simulate login process
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      const response = await axios.post("/login"); // assuming it's POST
+      const { token, user } = response.data;
+
+      login(token, user);
       navigate("/dashboard");
-    }, 1000);
+    } catch (err) {
+      console.error("Login failed:", err);
+      alert("Login failed.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

@@ -1,7 +1,5 @@
-
-
-import { useState } from "react"
-import { X, ArrowLeft } from "lucide-react"
+import { useState } from "react";
+import { X, ArrowLeft } from "lucide-react";
 
 export default function AdhocScanModal({ isOpen, onClose, websites }) {
   const [formData, setFormData] = useState({
@@ -9,42 +7,50 @@ export default function AdhocScanModal({ isOpen, onClose, websites }) {
     url: "",
     description: "",
     contact: "",
-  })
+  });
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle form submission
-    console.log("Starting adhoc scan:", formData)
-    onClose()
-  }
+    console.log("Starting adhoc scan:", formData);
+    onClose();
+  };
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg w-full max-w-md p-6 relative">
-        <button onClick={onClose} className="absolute right-4 top-4 text-gray-400 hover:text-gray-600">
+    <div className="fixed inset-0  bg-opacity-70 flex items-center justify-center z-50">
+      <div className="bg-white rounded-lg w-full max-w-2xl p-6 relative max-h-[90vh] overflow-y-auto border-1 border-black shadow-xl">
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
+        >
           <X size={20} />
         </button>
 
         <div className="flex items-center gap-3 mb-6">
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button
+            onClick={onClose}
+            className="text-gray-400 hover:text-gray-600"
+          >
             <ArrowLeft size={20} />
           </button>
-          <h2 className="text-xl font-semibold">Adhoc Scan</h2>
+          <h2 className="text-xl text-black font-semibold">Adhoc Scan</h2>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Website Name</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Website Name
+            </label>
             <select
               name="name"
               value={formData.name}
@@ -62,7 +68,9 @@ export default function AdhocScanModal({ isOpen, onClose, websites }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Website URL</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Website URL
+            </label>
             <input
               type="url"
               name="url"
@@ -75,7 +83,9 @@ export default function AdhocScanModal({ isOpen, onClose, websites }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Description
+            </label>
             <textarea
               name="description"
               value={formData.description}
@@ -87,7 +97,9 @@ export default function AdhocScanModal({ isOpen, onClose, websites }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Contact</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Contact
+            </label>
             <input
               type="email"
               name="contact"
@@ -108,6 +120,5 @@ export default function AdhocScanModal({ isOpen, onClose, websites }) {
         </form>
       </div>
     </div>
-  )
+  );
 }
-

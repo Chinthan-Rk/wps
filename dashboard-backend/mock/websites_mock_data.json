@@ -1,0 +1,35 @@
+[
+    {
+      "website_id": 1,
+      "website_name": "test",
+      "website_url": "http://test.com",
+      "website_description": "test",
+      "technical_contact": "john@sony.com",
+      "next_scan": "2024-05-09T15:00:39+05:30",
+      "scan_status": "Failed",
+      "vulnerabilities": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "info": 0
+      }
+    },
+    {
+      "website_id": 2,
+      "website_name": "test2",
+      "website_url": "https://www.test2.com",
+      "website_description": "example test 2",
+      "technical_contact": "1234@gmail.com",
+      "next_scan": "2025-03-26T11:27:45+05:30",
+      "scan_status": "Not Available",
+      "vulnerabilities": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0,
+        "info": 0
+      }
+    }
+  ]
+  

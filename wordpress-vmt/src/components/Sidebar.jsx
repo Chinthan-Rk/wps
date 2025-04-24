@@ -82,7 +82,7 @@ export default function Sidebar() {
             {!collapsed && <span>Dashboard</span>}
           </Link>
           <Link
-            to="/dashboard/websites"
+            to="/websites"
             className={`flex items-center ${
               collapsed ? "justify-center" : "gap-3"
             } p-3 rounded-lg transition-colors
@@ -96,7 +96,7 @@ export default function Sidebar() {
             {!collapsed && <span>Websites</span>}
           </Link>
           <Link
-            to="/dashboard/vulnerabilities"
+            to="/vulnerabilities"
             className={`flex items-center ${
               collapsed ? "justify-center" : "gap-3"
             } p-3 rounded-lg transition-colors

@@ -1,7 +1,5 @@
-
-
-import { useState } from "react"
-import { X } from "lucide-react"
+import { useState } from "react";
+import { X } from "lucide-react";
 
 export default function OnboardWebsiteModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
@@ -12,38 +10,47 @@ export default function OnboardWebsiteModal({ isOpen, onClose }) {
     scanDate: "",
     scanTime: "",
     frequency: "",
-  })
+  });
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle form submission
-    console.log("Form submitted:", formData)
-    onClose()
-  }
+    console.log("Form submitted:", formData);
+    onClose();
+  };
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg w-full max-w-md p-6 relative">
-        <button onClick={onClose} className="absolute right-4 top-4 text-gray-400 hover:text-gray-600">
+    <div className="fixed inset-0  bg-opacity-70 flex items-center justify-center z-50">
+      <div className="bg-white rounded-lg w-full max-w-2xl p-6 relative max-h-[90vh] overflow-y-auto border-1 border-black shadow-xl">
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
+        >
           <X size={20} />
         </button>
 
-        <h2 className="text-xl font-semibold mb-6">Onboard Website</h2>
-        <p className="text-sm text-gray-500 mb-6">Add a new website to monitor for vulnerabilities.</p>
+        <h2 className="text-xl text-black font-semibold mb-6">
+          Onboard Website
+        </h2>
+        <p className="text-sm text-black mb-6">
+          Add a new website to monitor for vulnerabilities.
+        </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Website Name</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Website Name
+            </label>
             <input
               type="text"
               name="name"
@@ -56,7 +63,9 @@ export default function OnboardWebsiteModal({ isOpen, onClose }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Website URL</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Website URL
+            </label>
             <input
               type="url"
               name="url"
@@ -69,7 +78,9 @@ export default function OnboardWebsiteModal({ isOpen, onClose }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Description
+            </label>
             <textarea
               name="description"
               value={formData.description}
@@ -81,7 +92,9 @@ export default function OnboardWebsiteModal({ isOpen, onClose }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Contact Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Contact Email
+            </label>
             <input
               type="email"
               name="email"
@@ -95,7 +108,9 @@ export default function OnboardWebsiteModal({ isOpen, onClose }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Scan Date</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Scan Date
+              </label>
               <input
                 type="date"
                 name="scanDate"
@@ -106,7 +121,9 @@ export default function OnboardWebsiteModal({ isOpen, onClose }) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Scan Time</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Scan Time
+              </label>
               <input
                 type="time"
                 name="scanTime"
@@ -119,7 +136,9 @@ export default function OnboardWebsiteModal({ isOpen, onClose }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Scan Frequency</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Scan Frequency
+            </label>
             <select
               name="frequency"
               value={formData.frequency}
@@ -152,6 +171,5 @@ export default function OnboardWebsiteModal({ isOpen, onClose }) {
         </form>
       </div>
     </div>
-  )
+  );
 }
-
