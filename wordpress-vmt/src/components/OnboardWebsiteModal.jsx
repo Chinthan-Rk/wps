@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X } from "lucide-react";
+import { addWebsite } from "@/services/websiteService";
 
 export default function OnboardWebsiteModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
@@ -12,11 +13,33 @@ export default function OnboardWebsiteModal({ isOpen, onClose }) {
     frequency: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
-    onClose();
+    try {
+      const newWebsite = {
+        website_name: formData.name,
+        website_url: formData.url,
+        website_description: formData.description,
+        technical_contact: formData.email,
+        next_scan: `${formData.scanDate}T${formData.scanTime}`, // ISO format
+        scan_status: "Not Available",
+        vulnerabilities: {
+          critical: 0,
+          high: 0,
+          medium: 0,
+          low: 0,
+          info: 0,
+        },
+      };
+
+      await addWebsite(newWebsite);
+      if (typeof refreshWebsites === "function") {
+        refreshWebsites(); //  Refresh table
+      }
+      onClose(); // Close modal
+    } catch (err) {
+      console.error("Failed to onboard website", err);
+    }
   };
 
   const handleChange = (e) => {
@@ -116,7 +139,7 @@ export default function OnboardWebsiteModal({ isOpen, onClose }) {
                 name="scanDate"
                 value={formData.scanDate}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-3 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 required
               />
             </div>
@@ -129,7 +152,8 @@ export default function OnboardWebsiteModal({ isOpen, onClose }) {
                 name="scanTime"
                 value={formData.scanTime}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                defaultValue={"09:00"}
+                className="w-full px-3 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 required
               />
             </div>

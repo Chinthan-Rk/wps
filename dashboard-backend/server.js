@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3000;
 app.use(cors());
 
-app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/", dashboardRoutes);
 
 const SECRET_KEY = "chinthan"; // Can be anything for now
 

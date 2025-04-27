@@ -1,40 +1,34 @@
-
-
-import { useState } from "react"
-import { Search, Globe, ExternalLink } from "lucide-react"
-import OnboardWebsiteModal from "@/components/OnboardWebsiteModal"
-import AdhocScanModal from "@/components/AdhocScanModal"
+import { useState, useEffect } from "react";
+import { Search, Globe, ExternalLink } from "lucide-react";
+import OnboardWebsiteModal from "@/components/OnboardWebsiteModal";
+import AdhocScanModal from "@/components/AdhocScanModal";
+import axios from "../../utils/Axios";
+import { getWebsites } from "../../services/websiteService";
 
 export default function WebsitesPage() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [showOnboardModal, setShowOnboardModal] = useState(false)
-  const [showAdhocModal, setShowAdhocModal] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showOnboardModal, setShowOnboardModal] = useState(false);
+  const [showAdhocModal, setShowAdhocModal] = useState(false);
 
-  // Sample data - replace with real data
-  const websites = [
-    {
-      name: "test2",
-      description: "example test 2",
-      url: "https://www.test2.com",
-      nextScan: "2025-03-26 11:27:45 am",
-      scanStatus: "Not Available",
-      vulnerabilities: { critical: 0, high: 0, medium: 1, low: 0, info: 0 },
-    },
-    {
-      name: "test",
-      description: "test",
-      url: "http://test.com",
-      nextScan: "2024-05-09 3:00:39 pm",
-      scanStatus: "Failed",
-      vulnerabilities: { critical: 0, high: 0, medium: 0, low: 0, info: 0 },
-    },
-  ]
+  const [websites, setWebsites] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchWebsites = async () => {
+      const websitesData = await getWebsites();
+      setWebsites(websitesData);
+      console.log(websitesData);
+    };
+
+    fetchWebsites();
+  }, []);
 
   const filteredWebsites = websites.filter(
     (website) =>
       website.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      website.description.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
+      website.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="p-6">
@@ -44,7 +38,10 @@ export default function WebsitesPage() {
 
       <div className="flex justify-between items-center mb-6 gap-4">
         <div className="relative flex-1 max-w-2xl">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <Search
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            size={20}
+          />
           <input
             type="text"
             placeholder="Search websites..."
@@ -74,11 +71,15 @@ export default function WebsitesPage() {
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Name
+                </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Description
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">URL</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  URL
+                </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Next Scan
                 </th>
@@ -98,11 +99,15 @@ export default function WebsitesPage() {
                       <div className="bg-indigo-100 p-2 rounded-lg mr-3">
                         <Globe className="h-5 w-5 text-indigo-600" />
                       </div>
-                      <span className="text-sm font-medium text-gray-900">{website.name}</span>
+                      <span className="text-sm font-medium text-gray-900">
+                        {website.name}
+                      </span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <span className="text-sm text-gray-500">{website.description}</span>
+                    <span className="text-sm text-gray-500">
+                      {website.description}
+                    </span>
                   </td>
                   <td className="px-6 py-4">
                     <a
@@ -116,12 +121,18 @@ export default function WebsitesPage() {
                     </a>
                   </td>
                   <td className="px-6 py-4">
-                    <span className="text-sm text-gray-500">{website.nextScan}</span>
+                    <span className="text-sm text-gray-500">
+                      {website.nextScan}
+                    </span>
                   </td>
                   <td className="px-6 py-4">
                     <span
                       className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                      ${website.scanStatus === "Failed" ? "bg-red-100 text-red-800" : "bg-gray-100 text-gray-800"}`}
+                      ${
+                        website.scanStatus === "Failed"
+                          ? "bg-red-100 text-red-800"
+                          : "bg-gray-100 text-gray-800"
+                      }`}
                     >
                       {website.scanStatus}
                     </span>
@@ -153,7 +164,8 @@ export default function WebsitesPage() {
         <div className="px-6 py-4 border-t border-gray-200">
           <div className="flex items-center justify-between">
             <p className="text-sm text-gray-700">
-              Showing 1 to {filteredWebsites.length} of {filteredWebsites.length} websites
+              Showing 1 to {filteredWebsites.length} of{" "}
+              {filteredWebsites.length} websites
             </p>
             <div className="flex gap-2">
               <button
@@ -173,12 +185,20 @@ export default function WebsitesPage() {
         </div>
       </div>
 
-      {showOnboardModal && <OnboardWebsiteModal isOpen={showOnboardModal} onClose={() => setShowOnboardModal(false)} />}
+      {showOnboardModal && (
+        <OnboardWebsiteModal
+          isOpen={showOnboardModal}
+          onClose={() => setShowOnboardModal(false)}
+        />
+      )}
 
       {showAdhocModal && (
-        <AdhocScanModal isOpen={showAdhocModal} onClose={() => setShowAdhocModal(false)} websites={websites} />
+        <AdhocScanModal
+          isOpen={showAdhocModal}
+          onClose={() => setShowAdhocModal(false)}
+          websites={websites}
+        />
       )}
     </div>
-  )
+  );
 }
-
